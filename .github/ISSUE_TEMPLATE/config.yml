@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Original design on Figma Community
+    url: https://www.figma.com/community/file/1255139674516193870/mouse-scroll-tooltip-microinteraction
+    about: Questions about the design itself belong with its designer, Airat.
+  - name: Report a security issue
+    url: https://github.com/chathurabuddi/mouse-scroll-cue/security/advisories/new
+    about: Please report security issues privately, not as public issues.

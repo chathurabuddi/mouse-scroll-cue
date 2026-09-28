@@ -1,0 +1,41 @@
+name: Bug report
+description: The cue looks or moves wrong somewhere
+labels: ['bug']
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead. A screenshot or screen recording helps a lot.
+    validations:
+      required: true
+  - type: dropdown
+    id: usage
+    attributes:
+      label: How do you load the SVG?
+      options:
+        - '<img> tag'
+        - Inline <svg> markup
+        - CSS background-image
+        - Other (describe above)
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: 'Safari 18.2 on macOS 15.3'
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The npm version, or when and where you copied the file.
+      placeholder: 'mouse-scroll-cue@1.0.0'
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: The smallest HTML and CSS that shows the problem, or a link to a CodePen or similar.
+      render: html

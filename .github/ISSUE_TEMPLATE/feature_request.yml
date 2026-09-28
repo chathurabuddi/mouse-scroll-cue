@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This project implements [Airat's design](https://www.figma.com/community/file/1255139674516193870/mouse-scroll-tooltip-microinteraction) faithfully.
+        Ideas that change how the cue looks or moves are welcome, but please describe them here before opening a pull request.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What are you trying to do that the cue does not support today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What you would like to happen.
+    validations:
+      required: true
