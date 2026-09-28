@@ -65,9 +65,11 @@ Releases are automated with [release-please](https://github.com/googleapis/relea
 Release pull requests are opened with the default `GITHUB_TOKEN`, so CI does not run on them.
 The publish job runs the full test suite before it publishes.
 
+If a publish fails after the GitHub release was created, publish that tag again from the Release workflow: `gh workflow run release.yml -f tag=vX.Y.Z`.
+
 ### First release (one time)
 
-Version 1.0.0 is released by hand, because npm sets up a trusted publisher from the package's settings page, which only exists after the first publish.
+npm can only add a trusted publisher to a package that already exists, so version 1.0.0 is published from CI with a short-lived token instead.
 Do these steps in this order.
 The `v1.0.0` GitHub release must exist before `main` is first pushed, or release-please treats every earlier commit as unreleased and opens a release pull request for them.
 
@@ -80,7 +82,10 @@ The `v1.0.0` GitHub release must exist before `main` is first pushed, or release
 7. Push `main`: `git push -u origin main`.
    CI and the demo deploy run.
    Release-please should find `v1.0.0` and do nothing, so close any release pull request it opens anyway.
-8. From a clean checkout of `v1.0.0`, run `npm publish`.
-9. On npmjs.com, open the package settings and add a **Trusted Publisher**: GitHub Actions, user `chathurabuddi`, repository `mouse-scroll-cue`, workflow `release.yml`, with direct `npm publish` allowed.
+8. On npmjs.com, create a **granular access token** with read and write access to all packages, **Bypass two-factor authentication** turned on, and the shortest expiry.
+9. Save it as the `NPM_TOKEN` repository secret: `gh secret set NPM_TOKEN`.
+10. Publish `v1.0.0` from the Release workflow: `gh workflow run release.yml -f tag=v1.0.0`.
+11. On npmjs.com, open the package settings and add a **Trusted Publisher**: GitHub Actions, user `chathurabuddi`, repository `mouse-scroll-cue`, workflow `release.yml`, with direct `npm publish` allowed.
+12. Delete the token on npmjs.com, and the secret: `gh secret delete NPM_TOKEN`.
 
 Every later release goes through release-please and publishes from CI.
