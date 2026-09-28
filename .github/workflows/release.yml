@@ -54,7 +54,7 @@ jobs:
         run: npm test
 
       - name: Publish with provenance
-        run: npm publish --provenance
+        run: npm publish --provenance --access public
         env:
           # Only needed for the first publish: npm tries trusted publishing (OIDC) first.
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
