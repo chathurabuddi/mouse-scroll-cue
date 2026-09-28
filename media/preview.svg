@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <!-- Generated from mouse-scroll-cue.svg by scripts/build-preview.mjs (npm run build:preview). Do not edit. -->
+  <rect width="160" height="160" rx="24" fill="#161616"/>
+  <svg x="34" y="27" width="92" height="106" viewBox="0 0 92 106" fill="none">
+    <!--
+      Mouse Scroll Cue, https://github.com/chathurabuddi/mouse-scroll-cue
+  
+      An implementation of "Mouse scroll tooltip Microinteraction" by Airat (https://www.figma.com/@airatdesign):
+      https://www.figma.com/community/file/1255139674516193870/mouse-scroll-tooltip-microinteraction
+      The original design is licensed under CC BY 4.0.
+      Changes: rebuilt as a standalone SVG, with the prototype's Smart Animate loop recreated as a CSS animation.
+  
+      SPDX-FileCopyrightText: Airat (original design)
+      SPDX-FileCopyrightText: 2026 Chathura Buddhika (SVG implementation)
+      SPDX-License-Identifier: CC-BY-4.0
+      License: https://creativecommons.org/licenses/by/4.0/ (provided as-is, without warranties)
+    -->
+    <style>
+      /* The Figma prototype's loop: after 1ms, Smart Animate on a critically damped spring (stiffness 23.33, damping 10.8,
+         mass 1) that runs 2315ms, then after 1ms an instant change back. linear() samples 1 - (1 + wt)e^(-wt), w = 4.83. */
+      .mouse-scroll-cue-dot,
+      .mouse-scroll-cue-arrow {
+        animation: 2317ms infinite;
+        animation-timing-function: cubic-bezier(0.3, 0.7, 0, 1);
+        animation-timing-function: linear(0, 0 0.043%, 0.0012 0.493%, 0.005 0.967%, 0.011 1.442%, 0.0196 1.942%, 0.0307 2.466%,
+          0.0445 3.016%, 0.0803 4.215%, 0.1149 5.214%, 0.1583 6.363%, 0.3701 11.583%, 0.4246 12.982%, 0.4729 14.281%,
+          0.5255 15.78%, 0.5728 17.228%, 0.6166 18.677%, 0.6569 20.126%, 0.6949 21.625%, 0.7304 23.173%, 0.7628 24.747%,
+          0.7927 26.37%, 0.8196 28.019%, 0.8443 29.743%, 0.8667 31.541%, 0.8867 33.389%, 0.9051 35.388%, 0.9214 37.486%,
+          0.9358 39.709%, 0.9484 42.082%, 0.9591 44.605%, 0.9683 47.302%, 0.9823 53.422%, 0.9909 60.316%, 0.9962 69.084%,
+          0.9988 80.424%, 1 99.957%, 1);
+      }
+  
+      .mouse-scroll-cue-dot {
+        animation-name: mouse-scroll-cue-dot;
+      }
+  
+      .mouse-scroll-cue-arrow-up {
+        animation-name: mouse-scroll-cue-arrow-up;
+      }
+  
+      .mouse-scroll-cue-arrow-down {
+        animation-name: mouse-scroll-cue-arrow-down;
+      }
+  
+      @keyframes mouse-scroll-cue-dot {
+        to { transform: translateY(-17px); }
+      }
+  
+      @keyframes mouse-scroll-cue-arrow-up {
+        to { transform: translateY(-30px); }
+      }
+  
+      @keyframes mouse-scroll-cue-arrow-down {
+        to { transform: translateY(28px); }
+      }
+  
+      @media (prefers-reduced-motion: reduce) {
+        .mouse-scroll-cue-dot,
+        .mouse-scroll-cue-arrow {
+          animation: none;
+        }
+      }
+    </style>
+    <defs>
+      <filter id="mouse-scroll-cue-dot-blur" x="41" y="46" width="9" height="9" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="1"/>
+      </filter>
+    </defs>
+    <path fill="#d0cfce" d="M47.8104 29H44.6518C37.1436 29 31 35.1511 31 42.6685V64.3315C31 71.8489 37.1436 78 44.6518 78H47.8104C55.3187 78 61.4622 71.8489 61.4622 64.3315V42.6685C61.4622 35.1511 55.3187 29 47.8104 29Z"/>
+    <path fill="#3f3f3f" d="M45.8491 35.8304C45.1575 35.8324 44.4948 36.1126 44.0058 36.6097C43.5168 37.1069 43.2412 37.7806 43.2392 38.4837V45.9474C43.2415 46.6502 43.5172 47.3236 44.0062 47.8205C44.4952 48.3174 45.1577 48.5974 45.8491 48.5995C46.5404 48.5974 47.2029 48.3174 47.6919 47.8205C48.1809 47.3236 48.4566 46.6502 48.459 45.9474V38.4837C48.457 37.7806 48.1814 37.1069 47.6923 36.6097C47.2033 36.1126 46.5406 35.8324 45.8491 35.8304Z"/>
+    <path fill="#9b9b9a" d="M44.6852 30.7962C48.4943 32.4581 52.1147 34.8428 52.5363 40.8685C53.0245 47.8473 50.4851 60.9145 49.6671 67.5517C49.0971 72.1918 46.8395 74.3411 43.8408 76.7757C42.3307 78.0052 50.4687 77.8555 53.8198 75.8635C56.6965 74.1543 59.4826 71.2208 59.5166 72.1483L59.923 39.135C59.923 39.135 58.7439 30.2602 49.1437 30.2564C49.1437 30.2564 39.5145 29.7536 44.6852 30.7962Z"/>
+    <g stroke="#000" stroke-width="2.55556" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M49.3373 77.2671H42.3695C36.1154 77.2671 31 72.0665 31 65.7095V41.2907C31 34.9337 36.1166 29.7332 42.3695 29.7332H49.336C55.5902 29.7332 60.7055 34.9337 60.7055 41.2907V65.7095C60.7055 72.0665 55.5889 77.2671 49.336 77.2671H49.3373Z"/>
+      <g class="mouse-scroll-cue-dot">
+        <circle cx="45.5" cy="50.5" r="2.5" fill="#d9d9d9" stroke="none" filter="url(#mouse-scroll-cue-dot-blur)"/>
+      </g>
+      <path d="M45.9581 48.6789H45.7467C45.0697 48.6772 44.4209 48.4031 43.9422 47.9164C43.4635 47.4297 43.1938 46.7701 43.1921 46.0819V38.3483C43.1921 36.9205 44.3423 35.7525 45.7467 35.7525H45.9581C47.3624 35.7525 48.5126 36.9205 48.5126 38.3495V46.0844C48.5126 47.5122 47.3624 48.6815 45.9581 48.6815V48.6789Z"/>
+      <path class="mouse-scroll-cue-arrow mouse-scroll-cue-arrow-up" stroke="#fff" d="M39 22.6649L45.6649 16M52.3834 22.6649L45.7186 16"/>
+      <path class="mouse-scroll-cue-arrow mouse-scroll-cue-arrow-down" stroke="#fff" d="M39 84L45.6649 90.6649M52.3834 84L45.7186 90.6649"/>
+    </g>
+  </svg>
+</svg>

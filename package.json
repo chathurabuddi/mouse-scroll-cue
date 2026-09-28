@@ -1,0 +1,50 @@
+{
+  "name": "mouse-scroll-cue",
+  "version": "1.0.0",
+  "description": "Animated mouse scroll hint as a single dependency-free SVG. An implementation of Airat's Mouse scroll tooltip Microinteraction design.",
+  "keywords": [
+    "scroll",
+    "scroll-indicator",
+    "scroll-down",
+    "mouse",
+    "svg",
+    "animation",
+    "microinteraction",
+    "css-animation"
+  ],
+  "homepage": "https://chathurabuddi.github.io/mouse-scroll-cue/",
+  "bugs": "https://github.com/chathurabuddi/mouse-scroll-cue/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chathurabuddi/mouse-scroll-cue.git"
+  },
+  "license": "CC-BY-4.0 AND MIT",
+  "author": "Chathura Buddhika (https://github.com/chathurabuddi)",
+  "contributors": [
+    "Airat, original design (https://www.figma.com/@airatdesign)"
+  ],
+  "type": "module",
+  "exports": {
+    "./mouse-scroll-cue.svg": "./mouse-scroll-cue.svg",
+    "./package.json": "./package.json"
+  },
+  "jsdelivr": "mouse-scroll-cue.svg",
+  "unpkg": "mouse-scroll-cue.svg",
+  "files": [
+    "mouse-scroll-cue.svg",
+    "NOTICE.md",
+    "LICENSE-CC-BY-4.0",
+    "LICENSE-MIT"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build:preview": "node scripts/build-preview.mjs",
+    "check": "npm run format:check && npm test"
+  },
+  "devDependencies": {
+    "fast-xml-parser": "^5.11.1",
+    "prettier": "^3.9.9"
+  }
+}
