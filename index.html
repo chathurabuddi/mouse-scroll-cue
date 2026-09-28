@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mouse Scroll Cue</title>
+    <meta
+      name="description"
+      content="An animated mouse scroll hint as a single SVG file. An implementation of Airat's Mouse scroll tooltip Microinteraction design."
+    />
+    <link rel="icon" href="mouse-scroll-cue.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0e0e0e;
+        --surface: #171717;
+        --border: #2a2a2a;
+        --text: #f2f2f2;
+        --muted: #a3a3a3;
+        --code: #d0cfce;
+        --radius: 16px;
+        --gutter: 16px;
+        font-family:
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+        line-height: 1.6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-underline-offset: 0.2em;
+      }
+
+      code,
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+      }
+
+      .wrap {
+        width: min(100% - 2 * var(--gutter), 880px);
+        margin-inline: auto;
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 100svh;
+        padding: 96px 0 160px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+
+      .hero p {
+        max-width: 36rem;
+        margin: 20px auto 0;
+        color: var(--muted);
+        font-size: 1.125rem;
+        text-wrap: balance;
+      }
+
+      .hero .cue {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        translate: -50% 0;
+      }
+
+      section {
+        padding: 56px 0;
+        border-top: 1px solid var(--border);
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+      }
+
+      section > .wrap > p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+
+      .sizes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      @media (max-width: 719px) {
+        .sizes {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .sizes figure:last-child {
+          grid-column: 1 / -1;
+        }
+      }
+
+      figure {
+        display: grid;
+        place-items: center;
+        gap: 12px;
+        margin: 0;
+        padding: 24px 16px 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+
+      figure > div {
+        display: grid;
+        place-items: center;
+        height: 212px;
+      }
+
+      figcaption {
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+
+      .snippet + .snippet {
+        margin-top: 24px;
+      }
+
+      .snippet-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 8px;
+      }
+
+      .snippet h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      pre {
+        margin: 0;
+        padding: 16px;
+        overflow-x: auto;
+        color: var(--code);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .copy {
+        padding: 4px 12px;
+        color: var(--text);
+        font: inherit;
+        font-size: 0.8125rem;
+        background: var(--border);
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .copy:hover {
+        background: #3a3a3a;
+      }
+
+      .copy:focus-visible {
+        outline: 2px solid var(--text);
+        outline-offset: 2px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--muted);
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      li strong {
+        color: var(--text);
+      }
+
+      footer {
+        padding: 40px 0 56px;
+        color: var(--muted);
+        font-size: 0.875rem;
+        border-top: 1px solid var(--border);
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      footer p + p {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <h1>Mouse Scroll Cue</h1>
+        <p>
+          An animated "scroll down" hint in a single SVG file, with no JavaScript. It implements
+          <a
+            href="https://www.figma.com/community/file/1255139674516193870/mouse-scroll-tooltip-microinteraction"
+            >Mouse scroll tooltip Microinteraction</a
+          >
+          by <a href="https://www.figma.com/@airatdesign">Airat</a>.
+        </p>
+      </div>
+      <img class="cue" src="mouse-scroll-cue.svg" width="92" height="106" alt="" />
+    </header>
+
+    <main>
+      <section aria-labelledby="sizes">
+        <div class="wrap">
+          <h2 id="sizes">Any size</h2>
+          <p>It is a vector, so it stays crisp at every size. Keep the 92 by 106 ratio.</p>
+          <div class="sizes">
+            <figure>
+              <div><img src="mouse-scroll-cue.svg" width="46" height="53" alt="" /></div>
+              <figcaption>46 &times; 53</figcaption>
+            </figure>
+            <figure>
+              <div><img src="mouse-scroll-cue.svg" width="92" height="106" alt="" /></div>
+              <figcaption>92 &times; 106 (native)</figcaption>
+            </figure>
+            <figure>
+              <div><img src="mouse-scroll-cue.svg" width="184" height="212" alt="" /></div>
+              <figcaption>184 &times; 212</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="use">
+        <div class="wrap">
+          <h2 id="use">Use it</h2>
+          <p>
+            Pick whichever fits your project. See the
+            <a href="https://github.com/chathurabuddi/mouse-scroll-cue#readme">README</a> for
+            details.
+          </p>
+
+          <div class="snippet">
+            <div class="snippet-head">
+              <h3>From a CDN</h3>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <pre><code>&lt;img src="https://cdn.jsdelivr.net/npm/mouse-scroll-cue@1/mouse-scroll-cue.svg"
+     width="92" height="106" alt=""&gt;</code></pre>
+          </div>
+
+          <div class="snippet">
+            <div class="snippet-head">
+              <h3>From npm</h3>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <pre><code>npm install mouse-scroll-cue</code></pre>
+          </div>
+
+          <div class="snippet">
+            <div class="snippet-head">
+              <h3>With a bundler</h3>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <pre><code>import scrollCueUrl from 'mouse-scroll-cue/mouse-scroll-cue.svg';</code></pre>
+          </div>
+
+          <div class="snippet">
+            <div class="snippet-head">
+              <h3>As a CSS background</h3>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <pre><code>.scroll-cue {
+  width: 92px;
+  aspect-ratio: 92 / 106;
+  background: url('mouse-scroll-cue.svg') center / contain no-repeat;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="notes">
+        <div class="wrap">
+          <h2 id="notes">Good to know</h2>
+          <ul>
+            <li>
+              <strong>Dark backgrounds only.</strong> The arrows are white, as in the original
+              design.
+            </li>
+            <li>
+              <strong>Decorative.</strong> Use <code>alt=""</code> on an image, or
+              <code>aria-hidden="true"</code> on inline markup.
+            </li>
+            <li>
+              <strong>Reduced motion.</strong> A <code>prefers-reduced-motion</code> rule stops the
+              animation when the visitor asks for less motion.
+            </li>
+            <li>
+              <strong>Faithful motion.</strong> The Figma prototype's spring is sampled into a CSS
+              <code>linear()</code> easing, with a <code>cubic-bezier()</code> fallback for older
+              browsers.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>
+          Design by <a href="https://www.figma.com/@airatdesign">Airat</a>, shared on
+          <a
+            href="https://www.figma.com/community/file/1255139674516193870/mouse-scroll-tooltip-microinteraction"
+            >Figma Community</a
+          >
+          under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+        </p>
+        <p>
+          SVG implementation by
+          <a href="https://github.com/chathurabuddi">Chathura Buddhika</a>, CC BY 4.0. Site and
+          tooling MIT.
+          <a href="https://github.com/chathurabuddi/mouse-scroll-cue">Source on GitHub</a>.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      for (const button of document.querySelectorAll('.copy')) {
+        button.addEventListener('click', async () => {
+          const code = button.closest('.snippet').querySelector('code');
+          try {
+            await navigator.clipboard.writeText(code.textContent);
+            button.textContent = 'Copied';
+          } catch {
+            button.textContent = 'Selected';
+            getSelection().selectAllChildren(code);
+          }
+          setTimeout(() => (button.textContent = 'Copy'), 2000);
+        });
+      }
+    </script>
+  </body>
+</html>
